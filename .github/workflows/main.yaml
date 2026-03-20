@@ -1,0 +1,36 @@
+name: Deploy Rotary certificate Website to E2E
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Deploy to E2E Server
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.E2E_HOST }}
+          username: ${{ secrets.E2E_USER }}
+          key: ${{ secrets.E2E_SSH_KEY }}
+          port: 7022
+
+          script: |
+            cd /root || exit 1
+
+            if [ ! -d "Rotarycertificate2026" ]; then
+              git clone git@github.com:Hi-ideals/cyclothon_2026.git Rotarycertificate2026
+            fi
+
+            cd Rotarycertificate2026
+            git pull
+
+            docker-compose down || true
+            docker-compose up -d --build
+            docker system prune -a --volumes -f
