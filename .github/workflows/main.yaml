@@ -25,7 +25,7 @@ jobs:
             cd /root/workspace || exit 1
 
             if [ ! -d "Rotarycertificate2026" ]; then
-              git clone git@github.com:Hi-ideals/cyclothon_2026.git Rotarycertificate2026
+              git clone git@github.com:Hi-ideals/rotarycertificate2026.git Rotarycertificate2026
             fi
 
             cd Rotarycertificate2026
