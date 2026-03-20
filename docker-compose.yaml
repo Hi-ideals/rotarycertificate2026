@@ -36,6 +36,7 @@ services:
       - rotarycertificate26-network-certificate
     ports:
       - "9317:8080"
+    mem_limit: 512m
     environment:
       MYSQL_HOST: db    
       MYSQL_PORT: 3306
