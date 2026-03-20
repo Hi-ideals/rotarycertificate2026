@@ -22,7 +22,7 @@ jobs:
           port: 7022
 
           script: |
-            cd /root || exit 1
+            cd /root/workspace || exit 1
 
             if [ ! -d "Rotarycertificate2026" ]; then
               git clone git@github.com:Hi-ideals/cyclothon_2026.git Rotarycertificate2026
