@@ -20,7 +20,6 @@ jobs:
           username: ${{ secrets.E2E_USER }}
           key: ${{ secrets.E2E_SSH_KEY }}
           port: 7022
-
           script: |
             cd /root/workspace || exit 1
 
